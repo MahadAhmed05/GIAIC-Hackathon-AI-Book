@@ -1,0 +1,93 @@
+openapi: 3.0.0
+info:
+  title: Digital Twin Simulation Content API
+  description: API for retrieving educational content about digital twin simulation with Gazebo and Unity
+  version: 1.0.0
+
+paths:
+  /api/content/digital-twin-sim/{chapterId}:
+    get:
+      summary: Retrieve a specific chapter content
+      description: Get the content of a specific chapter in the Digital Twin Simulation module
+      parameters:
+        - name: chapterId
+          in: path
+          required: true
+          schema:
+            type: string
+            enum: [physics-simulation-gazebo, high-fidelity-unity, sensor-simulation]
+          description: The ID of the chapter to retrieve
+      responses:
+        '200':
+          description: Chapter content retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Unique identifier for the chapter
+                  title:
+                    type: string
+                    description: Title of the chapter
+                  content:
+                    type: string
+                    description: Markdown content of the chapter
+                  learningObjectives:
+                    type: array
+                    items:
+                      type: string
+                    description: List of learning objectives for the chapter
+                  prerequisites:
+                    type: array
+                    items:
+                      type: string
+                    description: Prerequisites for understanding the chapter
+        '404':
+          description: Chapter not found
+
+  /api/content/digital-twin-sim/search:
+    get:
+      summary: Search Digital Twin Simulation content
+      description: Search through the Digital Twin Simulation module content
+      parameters:
+        - name: query
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Search query string
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 10
+          description: Maximum number of results to return
+      responses:
+        '200':
+          description: Search results
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                        title:
+                          type: string
+                        content:
+                          type: string
+                        chapter:
+                          type: string
+                        score:
+                          type: number
+                  totalCount:
+                    type: integer
+        '400':
+          description: Invalid search query

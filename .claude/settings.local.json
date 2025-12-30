@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir \"E:\\\\GIAIC\\\\specify\\\\ai-book\\\\.specify\" /s)",
+      "Bash(dir \"E:\\\\GIAIC\\\\specify\\\\ai-book\\\\.specify\\\\templates\")",
+      "Bash(mkdir -p history/prompts/constitution)"
+    ]
+  }
+}
