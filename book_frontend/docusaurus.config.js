@@ -20,10 +20,10 @@ const config = {
   },
 
   // Set the production url of your site here
-  url: "https://your-username.github.io", // Replace with your site's URL
+  url: "https://giaic-hackathon-ai-book.vercel.app/", // Replace with your site's URL
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: "/ai-book/book_frontend",
+  baseUrl: "/",
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
